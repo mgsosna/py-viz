@@ -1,2 +1,2 @@
-# py-viz
+# python-art
 Interesting visualizations in Python
