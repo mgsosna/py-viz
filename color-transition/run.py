@@ -2,12 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
 from matplotlib.colors import BoundaryNorm, ListedColormap, LinearSegmentedColormap
+import sys
 
 from helpers import gini, main_add_circles
 
+cli_args = sys.argv
+
 # Set start and end colors
-a_color = "#0c8599"
-b_color = "#f08c00"
+if len(sys.argv) < 3:
+    a_color = "#0c8599"
+    b_color = "#f08c00"
+else:
+    a_color = sys.argv[1]
+    b_color = sys.argv[2]
 
 # Generate data
 x = np.linspace(0, 1, 8000)
@@ -46,4 +53,4 @@ plt.gca().add_collection(lc)
 main_add_circles(a_color, b_color)
 
 # Save figure
-plt.savefig("gini_impurity.png", dpi=400, bbox_inches='tight')
+plt.savefig("gini_impurity2.png", dpi=400, bbox_inches='tight')
