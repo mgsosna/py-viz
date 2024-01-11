@@ -10,8 +10,10 @@ cli_args = sys.argv
 
 # Set start and end colors
 if len(sys.argv) < 3:
-    a_color = "#0c8599"
-    b_color = "#f08c00"
+    a_color = "#69db7c"
+    a_edgecolor = "#2f9e44"
+    b_color = "#ffd43b"
+    b_edgecolor = "#f08c00"
 else:
     a_color = sys.argv[1]
     b_color = sys.argv[2]
@@ -39,18 +41,23 @@ plt.yticks(
 
 # Generate line
 cmap = LinearSegmentedColormap.from_list(
-    'custom blue',
-    [a_color, b_color],
+    'custom',
+    [a_edgecolor, b_edgecolor],
     N=1000
 )
 lc = LineCollection(segments, cmap=cmap,
     norm=plt.Normalize(0, 1))
 lc.set_array(x)
-lc.set_linewidth(4)
+lc.set_linewidth(5)
 plt.gca().add_collection(lc)
 
 # Add circles
-main_add_circles(a_color, b_color)
+main_add_circles(
+    a_color=a_color,
+    b_color=b_color,
+    a_edgecolor=a_edgecolor,
+    b_edgecolor=b_edgecolor
+)
 
 # Save figure
-plt.savefig("gini_impurity2.png", dpi=400, bbox_inches='tight')
+plt.savefig("gini_impurity5.png", dpi=400, bbox_inches='tight')

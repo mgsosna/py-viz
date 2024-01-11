@@ -35,26 +35,31 @@ def gini(pk: float) -> float:
     return 1 - pk**2 - (1-pk)**2
 
 def plot_circle(x: float, y: float, edgecolor: str, dict_list: list) -> Circle:
-    plt.text(x-0.08, y, **dict_list[0])
-    plt.text(x+0.005, y+0.015, **dict_list[1])
-    plt.text(x+0.04, y-0.03, **dict_list[2])
-    plt.text(x, y-0.06, **dict_list[3])
-    plt.text(x-0.035, y+0.04, **dict_list[4])
-    plt.text(x-0.035, y-0.015, **dict_list[5])
-    plt.text(x-0.052, y-0.065, **dict_list[6])
-    plt.text(x+0.042, y+0.03, **dict_list[7])
-    return plt.Circle((x, y), 0.1, edgecolor=edgecolor, lw=2, fill=False)
+    plt.scatter([x+0.019], [y+0.067], **dict_list[0])
+    plt.scatter(x+0.015, [y+0.015], **dict_list[1])
+    plt.scatter([x+0.05], [y-0.03], **dict_list[2])
+    plt.scatter([x+0.01], [y-0.06], **dict_list[3])
+    plt.scatter([x-0.025], [y+0.04], **dict_list[4])
+    plt.scatter([x-0.065], [y], **dict_list[5])
+    plt.scatter([x-0.031], [y-0.035], **dict_list[6])
+    plt.scatter([x+0.052], [y+0.03], **dict_list[7])
+    return plt.Circle((x, y), 0.1, edgecolor=edgecolor, lw=3, fill=False)
 
-def main_add_circles(a_color = '#1971c2', b_color= '#e03131') -> None:
-    a_sign = "■"
-    b_sign = "▲"
-    a_fontsize = 10
-    b_fontsize = 12
+def main_add_circles(
+    a_color: str,
+    b_color: str,
+    a_edgecolor: str|None = None,
+    b_edgecolor: str|None = None
+) -> None:
+    if a_edgecolor is None:
+        a_edgecolor = a_color
+    if b_edgecolor is None:
+        b_edgecolor = b_color
 
-    a_dict = {"s": a_sign, "color": a_color, "fontsize": a_fontsize}
-    b_dict = {"s": b_sign, "color": b_color, "fontsize": b_fontsize}
+    a_dict = {"marker": "s", "color": a_color, "edgecolor": a_edgecolor, "s": 58}
+    b_dict = {"marker": "^", "color": b_color, "edgecolor": b_edgecolor, "s": 75}
 
-    cir_colors = interpolate(a_color, b_color, 5)
+    cir_colors = interpolate(a_edgecolor, b_edgecolor, 5)
 
     # Left
     circle1 = plot_circle(0.15, 0.09, cir_colors[0], [a_dict]*8)
