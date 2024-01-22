@@ -9,14 +9,20 @@ from helpers import gini, main_add_circles
 cli_args = sys.argv
 
 # Set start and end colors
-if len(sys.argv) < 3:
-    a_color = "#69db7c"
-    a_edgecolor = "#2f9e44"
-    b_color = "#ffd43b"
-    b_edgecolor = "#f08c00"
+if len(sys.argv) < 4:
+    b_color = "#3bc9db"
+    b_edgecolor = "#0c8599"
+    #a_color = "#69db7c"
+    #a_edgecolor = "#2f9e44"
+    a_color = "#ff8787"
+    a_edgecolor = "#e03131"
+    #b_color = "#ffd43b"
+    #b_edgecolor = "#f08c00"
 else:
-    a_color = sys.argv[1]
-    b_color = sys.argv[2]
+    a_edgecolor = sys.argv[1]
+    a_color = sys.argv[2]
+    b_edgecolor = sys.argv[3]
+    b_color = sys.argv[4]
 
 # Generate data
 x = np.linspace(0, 1, 8000)
@@ -30,7 +36,7 @@ segments = np.concatenate([points[:-1], points[1:]], axis=1)
 plt.figure(figsize=(5,5))
 plt.xlim(-0.03, 1.03)
 plt.ylim(-0.03, 1.03)
-plt.xlabel("$p_▲$", fontsize=16)
+plt.xlabel("$p_\checkmark$", fontsize=16)
 plt.ylabel("Gini impurity", fontsize=16)
 
 # Overwrite tickmarks so they're accurate

@@ -35,14 +35,14 @@ def gini(pk: float) -> float:
     return 1 - pk**2 - (1-pk)**2
 
 def plot_circle(x: float, y: float, edgecolor: str, dict_list: list) -> Circle:
-    plt.scatter([x+0.019], [y+0.067], **dict_list[0])
-    plt.scatter(x+0.015, [y+0.015], **dict_list[1])
-    plt.scatter([x+0.05], [y-0.03], **dict_list[2])
-    plt.scatter([x+0.01], [y-0.06], **dict_list[3])
-    plt.scatter([x-0.025], [y+0.04], **dict_list[4])
-    plt.scatter([x-0.065], [y], **dict_list[5])
-    plt.scatter([x-0.031], [y-0.035], **dict_list[6])
-    plt.scatter([x+0.052], [y+0.03], **dict_list[7])
+    plt.scatter([x+0.019], [y+0.062], **dict_list[0])
+    plt.scatter(x, [y+0.013], **dict_list[1])
+    plt.scatter([x+0.05], [y-0.05], **dict_list[2])
+    plt.scatter([x+0.01], [y-0.04], **dict_list[3])
+    plt.scatter([x-0.04], [y+0.035], **dict_list[4])
+    plt.scatter([x-0.065], [y-0.02], **dict_list[5])
+    plt.scatter([x-0.031], [y-0.055], **dict_list[6])
+    plt.scatter([x+0.052], [y+0.01], **dict_list[7])
     return plt.Circle((x, y), 0.1, edgecolor=edgecolor, lw=3, fill=False)
 
 def main_add_circles(
@@ -56,8 +56,8 @@ def main_add_circles(
     if b_edgecolor is None:
         b_edgecolor = b_color
 
-    a_dict = {"marker": "s", "color": a_color, "edgecolor": a_edgecolor, "s": 58}
-    b_dict = {"marker": "^", "color": b_color, "edgecolor": b_edgecolor, "s": 75}
+    a_dict = {"marker": "X", "color": a_color, "edgecolor": a_edgecolor, "s": 50}
+    b_dict = {"marker": "$✔$", "color": b_color, "edgecolor": b_edgecolor, "s": 120}
 
     cir_colors = interpolate(a_edgecolor, b_edgecolor, 5)
 
